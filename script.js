@@ -1,42 +1,42 @@
  
- window.addEventListener('DOMContentLoaded', () => {
+//  window.addEventListener('DOMContentLoaded', () => {
 
-    const tabs = document.querySelectorAll('.tabheader_item'),
-          tabsContent = document.querySelectorAll('tabcontent'),
-          tabsParent = document.querySelector('.tabheader_items');
+//     const tabs = document.querySelectorAll('.tabheader_item'),
+//           tabsContent = document.querySelectorAll('tabcontent'),
+//           tabsParent = document.querySelector('.tabheader_items');
 
-    function hideTabContent() {
-        tabsContent.forEach(item => {
-            item.style.display = 'none';
-        });
+//     function hideTabContent() {
+//         tabsContent.forEach(item => {
+//             item.style.display = 'none';
+//         });
 
-        tabs.forEach(tab => {
-            item.classList.remove('tabheader__item__active');
-        });
-    }
+//         tabs.forEach(tab => {
+//             item.classList.remove('tabheader__item__active');
+//         });
+//     }
 
-    function showTabContent(i = 0) {
-        tabsContent[i].style.display = 'block';
-        tabs[i].classList.add('tabheader__item__active');
-        }
+//     function showTabContent(i = 0) {
+//         tabsContent[i].style.display = 'block';
+//         tabs[i].classList.add('tabheader__item__active');
+//         }
 
-        hideTabContent();
-        showTabContent();
+//         hideTabContent();
+//         showTabContent();
 
-        tabsParent.addEventListener('click', (event) => {
-            const target = event.target;
+//         tabsParent.addEventListener('click', (event) => {
+//             const target = event.target;
 
-            if(target && target.classList.contains('tabheader__item')) {
-                tabs.forEach((item, i) => {
-                    if (target == item) {
-                        hideTabContent();
-                        showTabContent(i);
-                    }
+//             if(target && target.classList.contains('tabheader__item')) {
+//                 tabs.forEach((item, i) => {
+//                     if (target == item) {
+//                         hideTabContent();
+//                         showTabContent(i);
+//                     }
                      
-                });
-            }
-        });
- });
+//                 });
+//             }
+//         });
+//  });
 
 //MODAL
 const modalTrigger = document.querySelectorAll('[data-modal]'),
@@ -183,10 +183,7 @@ function postData(from) {
         
         form.insertAdjacentEelement('afterend', statusMessage)
 
-
-        const request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-
+      
         request.setRequestHeader('Content-type', 'application/json');
         const formData = new FormData(form);
 
@@ -195,22 +192,23 @@ function postData(from) {
             object[key] = value; 
         });  
 
-        const json = JSON.stringify(object);
-
-
-        request.send(json);
-
-        request.addEventListener('load', () => {
-            if (request.status === 200) {
-
-                showThanksModal(message.success);
-                from.reset();
-                statusMessage.remove();
-              
-            } else {
-                showThanksModal(message.failure);
-            }
-        });
+        fetch ('server.php', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/jason'
+            },
+            body: JSON.stringify(object)
+        }).then(data => data.text())
+        .then(data => {
+            console.log(data);
+            showThanksModal(message.success);
+            from.reset();
+            statusMessage.remove();
+        }).catch(()=>{
+            showThanksModal(message.failure);
+        }).finally(()=>{
+            form.reset();
+        })
 
     });
 }
@@ -226,10 +224,8 @@ function showThanksModal(message) {
     showThanksModal.classList.add('modal__dialog');
     showThanksModal.innerHTML = `
             <div class="modal__content">
-
                 <div class="modal__close" data-close>x</div>
                 <div class="modal__title">${message}</div>
-
             </div>
     
     `;
