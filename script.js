@@ -1,41 +1,44 @@
  
- window.addEventListener('DOMContentLoaded', () => {
+ window.addEventListener('DOMContentLoaded', function() {
 
-    const tabs = document.querySelectorAll('.tabheader_item'),
-          tabsContent = document.querySelectorAll('tabcontent'),
-          tabsParent = document.querySelector('.tabheader_items');
+    // Tabs
+    
+	let tabs = document.querySelectorAll('.tabheader__item'),
+		tabsContent = document.querySelectorAll('.tabcontent'),
+		tabsParent = document.querySelector('.tabheader__items');
 
-    function hideTabContent() {
+	function hideTabContent() {
+        
         tabsContent.forEach(item => {
-            item.style.display = 'none';
+            item.classList.add('hide');
+            item.classList.remove('show', 'fade');
         });
 
-        tabs.forEach(tab => {
-            item.classList.remove('tabheader__item__active');
+        tabs.forEach(item => {
+            item.classList.remove('tabheader__item_active');
         });
+	}
+
+	function showTabContent(i = 0) {
+        tabsContent[i].classList.add('show', 'fade');
+        tabsContent[i].classList.remove('hide');
+        tabs[i].classList.add('tabheader__item_active');
     }
+    
+    hideTabContent();
+    showTabContent();
 
-    function showTabContent(i = 0) {
-        tabsContent[i].style.display = 'block';
-        tabs[i].classList.add('tabheader__item__active');
-        }
-
-        hideTabContent();
-        showTabContent();
-
-        tabsParent.addEventListener('click', (event) => {
-            const target = event.target;
-
-            if(target && target.classList.contains('tabheader__item')) {
-                tabs.forEach((item, i) => {
-                    if (target == item) {
-                        hideTabContent();
-                        showTabContent(i);
-                    }
-                     
-                });
-            }
-        });
+	tabsParent.addEventListener('click', function(event) {
+		const target = event.target;
+		if(target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((item, i) => {
+                if (target == item) {
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            });
+		}
+    });
  });
 
 //MODAL
@@ -156,7 +159,7 @@ new MenuCard(
 
 //Forms
 
-const form = document.querySelectorAll('form');
+const forms = document.querySelectorAll('form');
 
 const message = {
     loading:'img/form/spinner.svg',
@@ -165,11 +168,11 @@ const message = {
 
 };
 
-form.forEach(item => {
+forms.forEach(item => {
     postData(item);
 });
 
-function postData(from) {
+function postData(form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -242,3 +245,7 @@ function showThanksModal(message) {
         closeModal();
     },4000)
 };
+
+fetch('db.json')
+    .then(data => data.json())
+    .then(res=> console.log(res));
