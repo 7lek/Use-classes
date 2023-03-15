@@ -18,7 +18,7 @@
             </nav>
         </div>
         <div class="header__right-block">
-            <button data-modal class="btn btn_white">Связаться с нами</button>
+            <button class="btn btn_white" data-modal>Связаться с нами</button>
         </div>
     </header>
     <div class="sidepanel">
@@ -42,12 +42,12 @@
                         Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Для людей, которые интересуются спортом; активных и здоровых. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!
                     </div>
                 </div>
-               <div class="tabcontent">
+                <div class="tabcontent">
                     <img src="img/tabs/elite.jpg" alt="elite">
                     <div class="tabcontent__descr">
                         Меню “Премиум” - мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!                                     
                     </div>
-                </div> -->
+                </div>
                 <div class="tabcontent">
                     <img src="img/tabs/post.jpg" alt="post">
                     <div class="tabcontent__descr">
@@ -59,7 +59,7 @@
                     <div class="tabcontent__descr">
                         Меню "Сбалансированное" - это соответствие вашего рациона всем научным рекомендациям. Мы тщательно просчитываем вашу потребность в к/б/ж/у и создаем лучшие блюда для вас.
                     </div>
-                </div> 
+                </div>
                 <div class="tabheader">
                     <h3>Выберите стиль питания</h3>
                     <div class="tabheader__items">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="offer__action">
-                <button data-modal class="btn btn_dark">Связаться с нами</button>
+                <button class="btn btn_dark" data-modal>Связаться с нами</button>
             </div>
         </div>
         <div class="container">
@@ -113,17 +113,19 @@
                     </div>
                 </div>
                 <div class="offer__slider-wrapper">
-                    <div class="offer__slide">
-                        <img src="img/slider/pepper.jpg" alt="pepper">
-                    </div>
-                    <div class="offer__slide">
-                        <img src="img/slider/food-12.jpg" alt="food">
-                    </div>
-                    <div class="offer__slide">
-                        <img src="img/slider/olive-oil.jpg" alt="oil">
-                    </div>
-                    <div class="offer__slide">
-                        <img src="img/slider/paprika.jpg" alt="paprika">
+                    <div class="offer__slider-inner">
+                        <div class="offer__slide">
+                            <img src="img/slider/pepper.jpg" alt="pepper">
+                        </div>
+                        <div class="offer__slide">
+                            <img src="img/slider/food-12.jpg" alt="food">
+                        </div>
+                        <div class="offer__slide">
+                            <img src="img/slider/olive-oil.jpg" alt="oil">
+                        </div>
+                        <div class="offer__slide">
+                            <img src="img/slider/paprika.jpg" alt="paprika">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,8 +143,8 @@
                     Ваш пол
                 </div>
                 <div class="calculating__choose" id="gender">
-                    <div class="calculating__choose-item calculating__choose-item_active">Женщина</div>
-                    <div class="calculating__choose-item">Мужчина</div>
+                    <div id ="famale" class="calculating__choose-item calculating__choose-item_active">Женщина</div>
+                    <div id ="male" class="calculating__choose-item">Мужчина</div>
                 </div>
 
                 <div class="calculating__subtitle">
@@ -158,21 +160,21 @@
                     Выберите вашу физическая активность
                 </div>
                 <div class="calculating__choose calculating__choose_big">
-                    <div id="low" class="calculating__choose-item">Низкая активность </div>
-                    <div id="small"  class="calculating__choose-item calculating__choose-item_active">Невысокая активность</div>
-                    <div id="medium" class="calculating__choose-item">Умеренная активность</div>
-                    <div id="high" class="calculating__choose-item">Высокая активность</div>
-                </div>                                                                                                      
+                    <div data-ratio="1.2" id="low" class="calculating__choose-item">Низкая активность </div>
+                    <div data-ratio="1.375" id="small"  class="calculating__choose-item calculating__choose-item_active">Невысокая активность</div>
+                    <div data-ratio="1.55" id="medium" class="calculating__choose-item">Умеренная активность</div>
+                    <div data-ratio="1.725" id="high" class="calculating__choose-item">Высокая активность</div>
+                </div>
 
                 <div class="calculating__divider"></div>
 
                 <div class="calculating__total">
                     <div class="calculating__subtitle">
-                        Ваша суточная норма калорий:    
+                        Ваша суточная норма калорий:
                     </div>
                     <div class="calculating__result">
                         <span>2700</span> ккал
-                    </div>      
+                    </div>
                 </div>
             </div>
         </div>
@@ -186,10 +188,9 @@
         <div class="menu__field">
             <div class="container">
 
-                </div>
             </div>
         </div>
-    
+    </div>
 
     <div class="order">
         <div class="container">
@@ -251,7 +252,7 @@
             <div class="pepper">
                 <img src="icons/veg.svg" alt="pepper">
             </div>
-            <div class="call"> 
+            <div class="call">
                 <div class="subtitle">Или позвоните нам</div>
                 <a href="#" class="link">+380678341034</a>
                 <a href="#" class="link">+380500941356</a>
@@ -263,7 +264,7 @@
         <div class="modal__dialog">
             <div class="modal__content">
                 <form action="#">
-                    <div data-close class="modal__close">&times;</div>
+                    <div class="modal__close" data-close>&times;</div>
                     <div class="modal__title">Мы свяжемся с вами как можно быстрее!</div>
                     <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
                     <input required placeholder="Ваш номер телефона" name="phone" type="phone" class="modal__input">
@@ -272,6 +273,20 @@
             </div>
         </div>
     </div>
-    <script src="/js/script.js"></script>
+    <script src="/js/bundle.js"></script>
 </body>
 </html>
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
